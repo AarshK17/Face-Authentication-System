@@ -1,0 +1,6 @@
+streamlit
+deepface
+tensorflow-cpu==2.15.0
+numpy
+pillow
+opencv-python-headless
