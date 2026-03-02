@@ -1,61 +1,138 @@
 # Face Authentication System
 
-A Streamlit-based face authentication system using DeepFace (FaceNet model) and cosine similarity. The application is fully compatible with Streamlit Cloud and uses browser-based camera input.
+A real-time face authentication system built using Python, Streamlit, OpenCV, and DeepFace.  
+The application enables secure face-based login and includes an admin panel for managing users.
+
+---
 
 ## Features
 
-- Browser camera authentication
-- Face recognition using FaceNet
-- Cosine similarity matching
-- Confidence score display
-- Admin-based user registration
-- In-memory embedding storage
-- Streamlit Cloud compatible
+- Real-time face verification using webcam
+- DeepFace with FaceNet model
+- Confidence score calculation
+- Admin panel to add, update, and delete users
+- Adjustable authentication threshold
+- Session-based login management
 
-## Technology Stack
+---
+
+## Tech Stack
 
 - Python
 - Streamlit
-- DeepFace (FaceNet)
+- OpenCV
+- DeepFace
+- TensorFlow
 - NumPy
 - Pillow
 
-## Installation (Local Setup)
-
-1. Clone the repository:
-   git clone https://github.com/your-username/your-repo-name.git
-
-2. Navigate to the project directory:
-   cd your-repo-name
-
-3. Install dependencies:
-   pip install -r requirements.txt
-
-4. Run the application:
-   streamlit run app.py
-
-## Deployment (Streamlit Cloud)
-
-1. Push the project to GitHub.
-2. Go to https://streamlit.io/cloud
-3. Connect your repository.
-4. Select `app.py` as the entry file.
-5. Deploy.
-
-## Important Notes
-
-- User data is stored in session memory.
-- All registered users are cleared when the app restarts.
-- For production use, integrate a persistent database (e.g., Firebase, PostgreSQL, MongoDB).
+---
 
 ## Project Structure
 
-FaceAuthApp/
+```
+face-authentication-system/
 │
-├── app.py  
-├── requirements.txt  
-└── README.md  
+├── app.py
+├── register.py
+├── users/
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
 
-## License
+---
 
-This project is intended for academic and demonstration purposes.
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/your-username/face-authentication-system.git
+cd face-authentication-system
+```
+
+### Create virtual environment (recommended)
+
+```bash
+python -m venv face_env
+face_env\Scripts\activate     # Windows
+# source face_env/bin/activate  # Mac/Linux
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Run the Application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## Admin Access
+
+Default Admin Name:
+```
+Aarsh
+```
+
+Admin users can:
+- Add new users
+- Update face data
+- Delete users
+
+---
+
+## Face Registration (CLI)
+
+```bash
+python register.py
+```
+
+This captures and stores face images inside:
+```
+users/<username>/
+```
+
+---
+
+## How It Works
+
+1. Captures live image from webcam.
+2. Compares with stored user images using DeepFace.
+3. Uses FaceNet embeddings to compute similarity distance.
+4. If distance is below the defined threshold, authentication succeeds.
+5. Confidence is calculated as:
+
+```
+confidence = (1 - distance) * 100
+```
+
+Threshold can be modified in `app.py`:
+
+```python
+THRESHOLD = 0.35
+```
+
+---
+
+## Future Improvements
+
+- Liveness detection
+- Embedding storage for faster matching
+- Database integration
+- Cloud deployment
+- Multi-factor authentication
+
+---
+
+## Author
+
+Aarsh Khadgi
