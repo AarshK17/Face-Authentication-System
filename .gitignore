@@ -1,0 +1,15 @@
+# Virtual Environment
+venv/
+face_env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Images
+live.jpg
+users/*/*.jpg
+
+# OS
+.DS_Store
+Thumbs.db
